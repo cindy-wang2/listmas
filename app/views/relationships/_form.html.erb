@@ -16,7 +16,7 @@
 
     <%= f.label :your_giftgivers %>
     <!-- Input for your_giftgivers start -->
-    <%= f.number_field :your_giftgivers, class: your_giftgiver_class, placeholder: "Enter your giftgiver" %>
+    <%= f.collection_select :your_giftgivers, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for your_giftgivers end -->
     <% if your_giftgiver_was_invalid %>
       <% relationship.errors.full_messages_for(:your_giftgiver).each do |message| %>
