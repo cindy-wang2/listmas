@@ -1,10 +1,6 @@
 <% was_validated = wishlist.errors.any? %>
 
 <%= form_with(model: wishlist, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for user start -->
-  <!-- Input for "user" start -->
   <%= f.hidden_field :user, value: current_user.id %>
-  <!-- Input for "user" end -->
-  <!-- Label and input for user end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

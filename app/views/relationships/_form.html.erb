@@ -1,7 +1,6 @@
 <% was_validated = relationship.errors.any? %>
 
 <%= form_with(model: relationship, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for your_giftgivers start -->
   <div class="form-group">
     <% your_giftgiver_class = "form-control" %>
     <% your_giftgiver_was_invalid = relationship.errors.include?(:your_giftgiver) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :your_giftgivers %>
-    <!-- Input for your_giftgivers start -->
     <%= f.collection_select :your_giftgivers, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for your_giftgivers end -->
     <% if your_giftgiver_was_invalid %>
       <% relationship.errors.full_messages_for(:your_giftgiver).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for your_giftgivers end -->
-  <!-- Label and input for your_recipients start -->
   <div class="form-group">
     <% your_recipient_class = "form-control" %>
     <% your_recipient_was_invalid = relationship.errors.include?(:your_recipient) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :your_recipients %>
-    <!-- Input for your_recipients start -->
     <%= f.collection_select :your_recipients, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for your_recipients end -->
     <% if your_recipient_was_invalid %>
       <% relationship.errors.full_messages_for(:your_recipient).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for your_recipients end -->
-  <!-- Label and input for relationshiptype start -->
   <div class="form-group">
     <% relationshiptype_class = "form-control" %>
     <% relationshiptype_was_invalid = relationship.errors.include?(:relationshiptype) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :relationshiptype %>
-    <!-- Input for relationshiptype start -->
     <%= f.text_field :relationshiptype, class: relationshiptype_class, placeholder: "Enter relationshiptype" %>
-    <!-- Input for relationshiptype end -->
     <% if relationshiptype_was_invalid %>
       <% relationship.errors.full_messages_for(:relationshiptype).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for relationshiptype end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

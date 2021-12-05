@@ -1,32 +1,18 @@
-<!-- Form relationship start -->
 <%= form_with(model: @relationship, local: true) do |f| %>
-<!-- Form relationship end -->
 
-  <!-- Label and input for your_giftgivers start -->
   <div class="form-group">
     <%= f.label :your_giftgivers %>
 
-    <!-- Input for your_giftgivers start -->
     <%= f.text_field :your_giftgivers, class: "form-control" %>
-    <!-- Input for your_giftgivers end -->
   </div>
-  <!-- Label and input for your_giftgivers end -->
 
-  <!-- Label and input for your_recipients start -->
-  <!-- Input for your_recipients start -->
   <%= f.hidden_field :your_recipients, value: @user.id %>
-  <!-- Input for your_recipients end -->
-  <!-- Label and input for your_recipients end -->
 
-  <!-- Label and input for relationshiptype start -->
   <div class="form-group">
     <%= f.label :relationshiptype %>
 
-    <!-- Input for relationshiptype start -->
     <%= f.text_field :relationshiptype, class: "form-control" %>
-    <!-- Input for relationshiptype end -->
   </div>
-  <!-- Label and input for relationshiptype end -->
 
   <%= f.submit "Create relationship", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

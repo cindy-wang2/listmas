@@ -6,13 +6,11 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>User</dt>
-      <!-- Display user start -->
       <dd>
         <% if @wishlist.recipient.present? %>
           <%= link_to wishlist.recipient, wishlist.recipient %>
         <% end %>
       </dd>
-      <!-- Display user end -->
 
     </dl>
 
@@ -21,7 +19,6 @@
         <%= link_to_show_or_back wishlist, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link wishlist start -->
       <div class="col">
         <% if current_user == @wishlist.recipient %>
           <%= link_to edit_wishlist_url(wishlist), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -29,9 +26,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link wishlist end -->
 
-      <!-- Delete link wishlist start -->
       <div class="col">
         <% if current_user == @wishlist.recipient %>
           <%= link_to wishlist, method: :delete, data: { confirm: "Do you really want to delete this wishlist?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -39,7 +34,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link wishlist end -->
     </div>
   </div>
 

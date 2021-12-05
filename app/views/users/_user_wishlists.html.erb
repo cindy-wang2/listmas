@@ -10,18 +10,14 @@
   <ul class="list-group list-group-flush">
     <% @user.wishlists.each do |wishlist| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to wishlist, wishlist %>
-        <!-- Show link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="user_wishlists_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "users/user_wishlists_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 
