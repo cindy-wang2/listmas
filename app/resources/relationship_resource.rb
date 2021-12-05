@@ -8,6 +8,10 @@ class RelationshipResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :recipient,
+             resource: UserResource,
+             foreign_key: :your_giftgivers
+
   # Indirect associations
 
 end

@@ -9,6 +9,10 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :gifters,
+             resource: RelationshipResource,
+             foreign_key: :your_giftgivers
+
   has_many   :wishlists
 
   # Indirect associations
