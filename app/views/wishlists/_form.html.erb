@@ -16,7 +16,7 @@
 
     <%= f.label :user %>
     <!-- Input for user start -->
-    <%= f.number_field :user, class: user_class, placeholder: "Enter user" %>
+    <%= f.collection_select :user, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for user end -->
     <% if user_was_invalid %>
       <% wishlist.errors.full_messages_for(:user).each do |message| %>
