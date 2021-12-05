@@ -8,13 +8,5 @@ class RelationshipResource < ApplicationResource
 
   # Direct associations
 
-  belongs_to :giftgiver,
-             resource: UserResource,
-             foreign_key: :your_recipients
-
-  belongs_to :recipient,
-             resource: UserResource,
-             foreign_key: :your_giftgivers
-
   # Indirect associations
 end

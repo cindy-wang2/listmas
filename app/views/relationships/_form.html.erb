@@ -14,7 +14,7 @@
     <% end %>
 
     <%= f.label :your_giftgivers %>
-    <%= f.collection_select :your_giftgivers, User.all, :id, :to_s, {}, class: "form-control" %>
+    <%= f.number_field :your_giftgivers, class: your_giftgiver_class, placeholder: "Enter your giftgiver" %>
     <% if your_giftgiver_was_invalid %>
       <% relationship.errors.full_messages_for(:your_giftgiver).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -36,7 +36,7 @@
     <% end %>
 
     <%= f.label :your_recipients %>
-    <%= f.collection_select :your_recipients, User.all, :id, :to_s, {}, class: "form-control" %>
+    <%= f.number_field :your_recipients, class: your_recipient_class, placeholder: "Enter your recipient" %>
     <% if your_recipient_was_invalid %>
       <% relationship.errors.full_messages_for(:your_recipient).each do |message| %>
         <div class="invalid-feedback d-flex">
