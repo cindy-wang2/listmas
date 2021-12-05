@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "wishlists#index"
   resources :relationships
   resources :gifts
   resources :wishlists
