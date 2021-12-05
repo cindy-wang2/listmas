@@ -24,7 +24,12 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.new(relationship_params)
 
     if @relationship.save
-      redirect_to @relationship, notice: 'Relationship was successfully created.'
+      message = 'Relationship was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @relationship, notice: message
+      end
     else
       render :new
     end

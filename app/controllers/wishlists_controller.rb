@@ -8,6 +8,7 @@ class WishlistsController < ApplicationController
 
   # GET /wishlists/1
   def show
+    @gift = Gift.new
   end
 
   # GET /wishlists/new
@@ -24,7 +25,12 @@ class WishlistsController < ApplicationController
     @wishlist = Wishlist.new(wishlist_params)
 
     if @wishlist.save
-      redirect_to @wishlist, notice: 'Wishlist was successfully created.'
+      message = 'Wishlist was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @wishlist, notice: message
+      end
     else
       render :new
     end

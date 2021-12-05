@@ -1,0 +1,32 @@
+<!-- Form gift start -->
+<%= form_with(model: @gift, local: true) do |f| %>
+<!-- Form gift end -->
+
+  <!-- Label and input for wishlist start -->
+  <!-- Input for wishlist start -->
+  <%= f.hidden_field :wishlist, value: @wishlist.id %>
+  <!-- Input for wishlist end -->
+  <!-- Label and input for wishlist end -->
+
+  <!-- Label and input for giftname start -->
+  <div class="form-group">
+    <%= f.label :giftname %>
+
+    <!-- Input for giftname start -->
+    <%= f.text_field :giftname, class: "form-control" %>
+    <!-- Input for giftname end -->
+  </div>
+  <!-- Label and input for giftname end -->
+
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <%= f.label :description %>
+
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: "form-control" %>
+    <!-- Input for description end -->
+  </div>
+  <!-- Label and input for description end -->
+
+  <%= f.submit "Create gift", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

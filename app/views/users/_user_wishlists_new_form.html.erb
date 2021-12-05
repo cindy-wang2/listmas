@@ -1,0 +1,12 @@
+<!-- Form wishlist start -->
+<%= form_with(model: @wishlist, local: true) do |f| %>
+<!-- Form wishlist end -->
+
+  <!-- Label and input for user start -->
+  <!-- Input for user start -->
+  <%= f.hidden_field :user, value: @user.id %>
+  <!-- Input for user end -->
+  <!-- Label and input for user end -->
+
+  <%= f.submit "Create wishlist", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

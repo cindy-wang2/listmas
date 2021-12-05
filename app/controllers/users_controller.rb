@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @relationship = Relationship.new
+    @wishlist = Wishlist.new
   end
 
   # GET /users/new
