@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :recipients,
+             :class_name => "Relationship",
+             :foreign_key => "your_recipients",
+             :dependent => :destroy
+
   has_many   :gifters,
              :class_name => "Relationship",
              :foreign_key => "your_giftgivers",
