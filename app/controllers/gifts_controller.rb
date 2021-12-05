@@ -3,7 +3,7 @@ class GiftsController < ApplicationController
 
   # GET /gifts
   def index
-    @gifts = Gift.all
+    @gifts = Gift.page(params[:page]).per(10)
   end
 
   # GET /gifts/1

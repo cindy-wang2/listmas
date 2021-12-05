@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
 
   # GET /relationships
   def index
-    @relationships = Relationship.all
+    @relationships = Relationship.page(params[:page]).per(10)
   end
 
   # GET /relationships/1
