@@ -1,6 +1,10 @@
 class Gift < ApplicationRecord
   # Direct associations
 
+  belongs_to :list,
+             :class_name => "Wishlist",
+             :foreign_key => "wishlist"
+
   # Indirect associations
 
   # Validations
