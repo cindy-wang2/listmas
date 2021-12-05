@@ -42,7 +42,7 @@
 
     <%= f.label :your_recipients %>
     <!-- Input for your_recipients start -->
-    <%= f.number_field :your_recipients, class: your_recipient_class, placeholder: "Enter your recipient" %>
+    <%= f.collection_select :your_recipients, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for your_recipients end -->
     <% if your_recipient_was_invalid %>
       <% relationship.errors.full_messages_for(:your_recipient).each do |message| %>
