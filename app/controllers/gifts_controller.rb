@@ -1,15 +1,14 @@
 class GiftsController < ApplicationController
-  before_action :set_gift, only: [:show, :edit, :update, :destroy]
+  before_action :set_gift, only: %i[show edit update destroy]
 
   # GET /gifts
   def index
     @q = Gift.ransack(params[:q])
-    @gifts = @q.result(:distinct => true).includes(:list).page(params[:page]).per(10)
+    @gifts = @q.result(distinct: true).includes(:list).page(params[:page]).per(10)
   end
 
   # GET /gifts/1
-  def show
-  end
+  def show; end
 
   # GET /gifts/new
   def new
@@ -17,17 +16,16 @@ class GiftsController < ApplicationController
   end
 
   # GET /gifts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /gifts
   def create
     @gift = Gift.new(gift_params)
 
     if @gift.save
-      message = 'Gift was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Gift was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @gift, notice: message
       end
@@ -39,7 +37,7 @@ class GiftsController < ApplicationController
   # PATCH/PUT /gifts/1
   def update
     if @gift.update(gift_params)
-      redirect_to @gift, notice: 'Gift was successfully updated.'
+      redirect_to @gift, notice: "Gift was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,22 @@ class GiftsController < ApplicationController
   def destroy
     @gift.destroy
     message = "Gift was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to gifts_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_gift
-      @gift = Gift.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def gift_params
-      params.require(:gift).permit(:wishlist, :giftname, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_gift
+    @gift = Gift.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def gift_params
+    params.require(:gift).permit(:wishlist, :giftname, :description)
+  end
 end

@@ -13,5 +13,4 @@ class GiftResource < ApplicationResource
              foreign_key: :wishlist
 
   # Indirect associations
-
 end

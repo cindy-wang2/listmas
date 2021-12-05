@@ -13,5 +13,4 @@ class WishlistResource < ApplicationResource
              foreign_key: :user
 
   # Indirect associations
-
 end

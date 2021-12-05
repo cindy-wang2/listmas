@@ -1,12 +1,14 @@
 class WishlistsController < ApplicationController
-  before_action :current_user_must_be_wishlist_recipient, only: [:edit, :update, :destroy] 
+  before_action :current_user_must_be_wishlist_recipient,
+                only: %i[edit update destroy]
 
-  before_action :set_wishlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_wishlist, only: %i[show edit update destroy]
 
   # GET /wishlists
   def index
     @q = current_user.wishlists.ransack(params[:q])
-    @wishlists = @q.result(:distinct => true).includes(:recipient, :gifts).page(params[:page]).per(10)
+    @wishlists = @q.result(distinct: true).includes(:recipient,
+                                                    :gifts).page(params[:page]).per(10)
   end
 
   # GET /wishlists/1
@@ -20,17 +22,16 @@ class WishlistsController < ApplicationController
   end
 
   # GET /wishlists/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /wishlists
   def create
     @wishlist = Wishlist.new(wishlist_params)
 
     if @wishlist.save
-      message = 'Wishlist was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Wishlist was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @wishlist, notice: message
       end
@@ -42,7 +43,7 @@ class WishlistsController < ApplicationController
   # PATCH/PUT /wishlists/1
   def update
     if @wishlist.update(wishlist_params)
-      redirect_to @wishlist, notice: 'Wishlist was successfully updated.'
+      redirect_to @wishlist, notice: "Wishlist was successfully updated."
     else
       render :edit
     end
@@ -52,30 +53,30 @@ class WishlistsController < ApplicationController
   def destroy
     @wishlist.destroy
     message = "Wishlist was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to wishlists_url, notice: message
     end
   end
-
 
   private
 
   def current_user_must_be_wishlist_recipient
     set_wishlist
     unless current_user == @wishlist.recipient
-      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+      redirect_back fallback_location: root_path,
+                    alert: "You are not authorized for that."
     end
   end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_wishlist
-      @wishlist = Wishlist.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_wishlist
+    @wishlist = Wishlist.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def wishlist_params
-      params.require(:wishlist).permit(:user)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def wishlist_params
+    params.require(:wishlist).permit(:user)
+  end
 end

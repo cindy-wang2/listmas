@@ -20,5 +20,4 @@ class UserResource < ApplicationResource
   has_many   :wishlists
 
   # Indirect associations
-
 end

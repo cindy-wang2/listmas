@@ -1,6 +1,5 @@
 ActiveAdmin.register Relationship do
-
- permit_params :your_giftgivers, :your_recipients, :relationshiptype
+  permit_params :your_giftgivers, :your_recipients, :relationshiptype
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register Relationship do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

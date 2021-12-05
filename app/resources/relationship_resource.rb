@@ -17,5 +17,4 @@ class RelationshipResource < ApplicationResource
              foreign_key: :your_giftgivers
 
   # Indirect associations
-
 end

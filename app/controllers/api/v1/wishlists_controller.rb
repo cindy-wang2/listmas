@@ -13,7 +13,7 @@ class Api::V1::WishlistsController < Api::V1::GraphitiController
     wishlist = WishlistResource.build(params)
 
     if wishlist.save
-      render jsonapi: wishlist, status: 201
+      render jsonapi: wishlist, status: :created
     else
       render jsonapi_errors: wishlist
     end
@@ -33,7 +33,7 @@ class Api::V1::WishlistsController < Api::V1::GraphitiController
     wishlist = WishlistResource.find(params)
 
     if wishlist.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: wishlist
     end

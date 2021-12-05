@@ -1,6 +1,5 @@
 ActiveAdmin.register Gift do
-
- permit_params :wishlist, :giftname, :description
+  permit_params :wishlist, :giftname, :description
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register Gift do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

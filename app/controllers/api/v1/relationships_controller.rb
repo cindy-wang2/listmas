@@ -13,7 +13,7 @@ class Api::V1::RelationshipsController < Api::V1::GraphitiController
     relationship = RelationshipResource.build(params)
 
     if relationship.save
-      render jsonapi: relationship, status: 201
+      render jsonapi: relationship, status: :created
     else
       render jsonapi_errors: relationship
     end
@@ -33,7 +33,7 @@ class Api::V1::RelationshipsController < Api::V1::GraphitiController
     relationship = RelationshipResource.find(params)
 
     if relationship.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: relationship
     end

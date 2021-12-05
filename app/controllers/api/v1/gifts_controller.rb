@@ -13,7 +13,7 @@ class Api::V1::GiftsController < Api::V1::GraphitiController
     gift = GiftResource.build(params)
 
     if gift.save
-      render jsonapi: gift, status: 201
+      render jsonapi: gift, status: :created
     else
       render jsonapi_errors: gift
     end
@@ -33,7 +33,7 @@ class Api::V1::GiftsController < Api::V1::GraphitiController
     gift = GiftResource.find(params)
 
     if gift.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: gift
     end
