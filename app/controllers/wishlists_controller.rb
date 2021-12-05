@@ -4,27 +4,22 @@ class WishlistsController < ApplicationController
 
   before_action :set_wishlist, only: %i[show edit update destroy]
 
-  # GET /wishlists
   def index
     @q = current_user.wishlists.ransack(params[:q])
     @wishlists = @q.result(distinct: true).includes(:recipient,
                                                     :gifts).page(params[:page]).per(10)
   end
 
-  # GET /wishlists/1
   def show
     @gift = Gift.new
   end
 
-  # GET /wishlists/new
   def new
     @wishlist = Wishlist.new
   end
 
-  # GET /wishlists/1/edit
   def edit; end
 
-  # POST /wishlists
   def create
     @wishlist = Wishlist.new(wishlist_params)
 
@@ -40,7 +35,6 @@ class WishlistsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /wishlists/1
   def update
     if @wishlist.update(wishlist_params)
       redirect_to @wishlist, notice: "Wishlist was successfully updated."
@@ -49,7 +43,6 @@ class WishlistsController < ApplicationController
     end
   end
 
-  # DELETE /wishlists/1
   def destroy
     @wishlist.destroy
     message = "Wishlist was successfully deleted."
@@ -70,12 +63,10 @@ class WishlistsController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_wishlist
     @wishlist = Wishlist.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def wishlist_params
     params.require(:wishlist).permit(:user)
   end
