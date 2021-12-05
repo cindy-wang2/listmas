@@ -5,7 +5,7 @@ class WishlistsController < ApplicationController
 
   # GET /wishlists
   def index
-    @wishlists = Wishlist.all
+    @wishlists = current_user.wishlists.page(params[:page]).per(10)
   end
 
   # GET /wishlists/1
