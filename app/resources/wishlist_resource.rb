@@ -6,6 +6,8 @@ class WishlistResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :gifts
+
   belongs_to :recipient,
              resource: UserResource,
              foreign_key: :user

@@ -8,6 +8,10 @@ class GiftResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :list,
+             resource: WishlistResource,
+             foreign_key: :wishlist
+
   # Indirect associations
 
 end
