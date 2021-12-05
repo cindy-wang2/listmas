@@ -6,18 +6,10 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Your giftgivers</dt>
-      <dd>
-        <% if @relationship.recipient.present? %>
-          <%= link_to relationship.recipient, relationship.recipient %>
-        <% end %>
-      </dd>
+      <dd><%= relationship.your_giftgivers %></dd>
 
       <dt>Your recipients</dt>
-      <dd>
-        <% if @relationship.giftgiver.present? %>
-          <%= link_to relationship.giftgiver, relationship.giftgiver %>
-        <% end %>
-      </dd>
+      <dd><%= relationship.your_recipients %></dd>
 
       <dt>Relationshiptype</dt>
       <dd><%= relationship.relationshiptype %></dd>
