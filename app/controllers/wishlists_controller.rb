@@ -1,4 +1,6 @@
 class WishlistsController < ApplicationController
+  before_action :current_user_must_be_wishlist_recipient, only: [:edit, :update, :destroy] 
+
   before_action :set_wishlist, only: [:show, :edit, :update, :destroy]
 
   # GET /wishlists
@@ -58,6 +60,14 @@ class WishlistsController < ApplicationController
 
 
   private
+
+  def current_user_must_be_wishlist_recipient
+    set_wishlist
+    unless current_user == @wishlist.recipient
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_wishlist
       @wishlist = Wishlist.find(params[:id])

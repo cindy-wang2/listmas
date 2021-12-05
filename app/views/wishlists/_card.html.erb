@@ -19,16 +19,20 @@
 
       <!-- Edit link wishlist start -->
       <div class="col">
-        <%= link_to edit_wishlist_url(wishlist), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @wishlist.recipient %>
+          <%= link_to edit_wishlist_url(wishlist), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link wishlist end -->
 
       <!-- Delete link wishlist start -->
       <div class="col">
-        <%= link_to wishlist, method: :delete, data: { confirm: "Do you really want to delete this wishlist?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @wishlist.recipient %>
+          <%= link_to wishlist, method: :delete, data: { confirm: "Do you really want to delete this wishlist?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link wishlist end -->
