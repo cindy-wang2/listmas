@@ -42,8 +42,14 @@ class GiftsController < ApplicationController
   # DELETE /gifts/1
   def destroy
     @gift.destroy
-    redirect_to gifts_url, notice: 'Gift was successfully destroyed.'
+    message = "Gift was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to gifts_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

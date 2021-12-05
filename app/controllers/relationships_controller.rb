@@ -42,8 +42,14 @@ class RelationshipsController < ApplicationController
   # DELETE /relationships/1
   def destroy
     @relationship.destroy
-    redirect_to relationships_url, notice: 'Relationship was successfully destroyed.'
+    message = "Relationship was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to relationships_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
