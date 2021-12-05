@@ -16,7 +16,7 @@
 
     <%= f.label :wishlist %>
     <!-- Input for wishlist start -->
-    <%= f.number_field :wishlist, class: wishlist_class, placeholder: "Enter wishlist" %>
+    <%= f.collection_select :wishlist, Wishlist.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for wishlist end -->
     <% if wishlist_was_invalid %>
       <% gift.errors.full_messages_for(:wishlist).each do |message| %>
