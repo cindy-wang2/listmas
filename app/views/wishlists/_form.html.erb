@@ -1,0 +1,31 @@
+<% was_validated = wishlist.errors.any? %>
+
+<%= form_with(model: wishlist, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for user start -->
+  <div class="form-group">
+    <% user_class = "form-control" %>
+    <% user_was_invalid = wishlist.errors.include?(:user) %>
+
+    <% if was_validated %>
+      <% if user_was_invalid %>
+        <% user_class << " is-invalid" %>
+      <% else %>
+        <% user_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user %>
+    <!-- Input for user start -->
+    <%= f.number_field :user, class: user_class, placeholder: "Enter user" %>
+    <!-- Input for user end -->
+    <% if user_was_invalid %>
+      <% wishlist.errors.full_messages_for(:user).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for user end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
