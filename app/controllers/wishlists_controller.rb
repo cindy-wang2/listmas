@@ -5,7 +5,8 @@ class WishlistsController < ApplicationController
 
   # GET /wishlists
   def index
-    @wishlists = current_user.wishlists.page(params[:page]).per(10)
+    @q = current_user.wishlists.ransack(params[:q])
+    @wishlists = @q.result(:distinct => true).includes(:recipient, :gifts).page(params[:page]).per(10)
   end
 
   # GET /wishlists/1

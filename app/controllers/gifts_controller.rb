@@ -3,7 +3,8 @@ class GiftsController < ApplicationController
 
   # GET /gifts
   def index
-    @gifts = Gift.page(params[:page]).per(10)
+    @q = Gift.ransack(params[:q])
+    @gifts = @q.result(:distinct => true).includes(:list).page(params[:page]).per(10)
   end
 
   # GET /gifts/1

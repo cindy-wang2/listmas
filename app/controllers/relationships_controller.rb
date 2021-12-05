@@ -3,7 +3,8 @@ class RelationshipsController < ApplicationController
 
   # GET /relationships
   def index
-    @relationships = Relationship.page(params[:page]).per(10)
+    @q = Relationship.ransack(params[:q])
+    @relationships = @q.result(:distinct => true).includes(:recipient, :giftgiver).page(params[:page]).per(10)
   end
 
   # GET /relationships/1
