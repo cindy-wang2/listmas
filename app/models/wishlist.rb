@@ -1,6 +1,10 @@
 class Wishlist < ApplicationRecord
   # Direct associations
 
+  belongs_to :recipient,
+             :class_name => "User",
+             :foreign_key => "user"
+
   # Indirect associations
 
   # Validations
