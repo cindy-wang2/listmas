@@ -1,0 +1,83 @@
+<% was_validated = gift.errors.any? %>
+
+<%= form_with(model: gift, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for wishlist start -->
+  <div class="form-group">
+    <% wishlist_class = "form-control" %>
+    <% wishlist_was_invalid = gift.errors.include?(:wishlist) %>
+
+    <% if was_validated %>
+      <% if wishlist_was_invalid %>
+        <% wishlist_class << " is-invalid" %>
+      <% else %>
+        <% wishlist_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :wishlist %>
+    <!-- Input for wishlist start -->
+    <%= f.number_field :wishlist, class: wishlist_class, placeholder: "Enter wishlist" %>
+    <!-- Input for wishlist end -->
+    <% if wishlist_was_invalid %>
+      <% gift.errors.full_messages_for(:wishlist).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for wishlist end -->
+  <!-- Label and input for giftname start -->
+  <div class="form-group">
+    <% giftname_class = "form-control" %>
+    <% giftname_was_invalid = gift.errors.include?(:giftname) %>
+
+    <% if was_validated %>
+      <% if giftname_was_invalid %>
+        <% giftname_class << " is-invalid" %>
+      <% else %>
+        <% giftname_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :giftname %>
+    <!-- Input for giftname start -->
+    <%= f.text_field :giftname, class: giftname_class, placeholder: "Enter giftname" %>
+    <!-- Input for giftname end -->
+    <% if giftname_was_invalid %>
+      <% gift.errors.full_messages_for(:giftname).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for giftname end -->
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = gift.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
+    <!-- Input for description end -->
+    <% if description_was_invalid %>
+      <% gift.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for description end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
