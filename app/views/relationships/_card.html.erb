@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Your giftgivers</dt>
       <!-- Display your_giftgivers start -->
-      <dd><%= relationship.your_giftgivers %></dd>
+      <dd>
+        <% if @relationship.recipient.present? %>
+          <%= link_to relationship.recipient, relationship.recipient %>
+        <% end %>
+      </dd>
       <!-- Display your_giftgivers end -->
 
       <dt>Your recipients</dt>
       <!-- Display your_recipients start -->
-      <dd><%= relationship.your_recipients %></dd>
+      <dd>
+        <% if @relationship.giftgiver.present? %>
+          <%= link_to relationship.giftgiver, relationship.giftgiver %>
+        <% end %>
+      </dd>
       <!-- Display your_recipients end -->
 
       <dt>Relationshiptype</dt>
