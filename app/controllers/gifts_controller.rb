@@ -3,7 +3,8 @@ class GiftsController < ApplicationController
 
   def index
     @q = Gift.ransack(params[:q])
-    @gifts = @q.result(distinct: true).includes(:list).page(params[:page]).per(10)
+    @gifts = @q.result(distinct: true).includes(:list,
+                                                :recipient).page(params[:page]).per(10)
   end
 
   def show; end
@@ -54,6 +55,6 @@ class GiftsController < ApplicationController
   end
 
   def gift_params
-    params.require(:gift).permit(:wishlist, :giftname, :description)
+    params.require(:gift).permit(:wishlist_id, :giftname, :description)
   end
 end

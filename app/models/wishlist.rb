@@ -4,9 +4,7 @@ class Wishlist < ApplicationRecord
   has_many   :gifts,
              dependent: :destroy
 
-  belongs_to :recipient,
-             class_name: "User",
-             foreign_key: "user"
+  belongs_to :user
 
   # Indirect associations
 
@@ -15,6 +13,6 @@ class Wishlist < ApplicationRecord
   # Scopes
 
   def to_s
-    recipient.to_s
+    user.to_s
   end
 end

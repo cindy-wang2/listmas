@@ -2,15 +2,14 @@ class WishlistResource < ApplicationResource
   attribute :id, :integer, writable: false
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
-  attribute :user, :integer
+  attribute :user_id, :integer
+  attribute :owner, :string
 
   # Direct associations
 
   has_many   :gifts
 
-  belongs_to :recipient,
-             resource: UserResource,
-             foreign_key: :user
+  belongs_to :user
 
   # Indirect associations
 end

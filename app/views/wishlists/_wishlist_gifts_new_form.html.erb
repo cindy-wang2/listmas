@@ -1,6 +1,6 @@
 <%= form_with(model: @gift, local: true) do |f| %>
 
-  <%= f.hidden_field :wishlist, value: @wishlist.id %>
+  <%= f.hidden_field :wishlist_id, value: @wishlist.id %>
 
   <div class="form-group">
     <%= f.label :giftname %>
