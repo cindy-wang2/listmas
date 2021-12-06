@@ -13,6 +13,6 @@ class Gift < ApplicationRecord
   # Scopes
 
   def to_s
-    list.to_s
+    gift_name
   end
 end

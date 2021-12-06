@@ -1,14 +1,9 @@
-<%= search_form_for @q, :class => collapse_search_form, :id => "gifts_filters" do |f| %>
+<%= search_form_for @q, :class => collapse_search_form, :id => "wishlists_filters" do |f| %>
   <p class="lead">Narrow results:</p>
 
   <div class="form-group">
-    <%= f.label :gift_name_cont, "Gift name contains" %>
-    <%= f.text_field :gift_name_cont, :class => "form-control", :placeholder => "Gift name contains" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :description_cont, "Description contains" %>
-    <%= f.text_field :description_cont, :class => "form-control", :placeholder => "Description contains" %>
+    <%= f.label :recipient_cont, "Recipient contains" %>
+    <%= f.text_field :recipient_cont, :class => "form-control", :placeholder => "Recipient contains" %>
   </div>
 
   <div class="form-group">
@@ -52,14 +47,23 @@
   </script>
 
 
+  <div class="form-group">
+    <%= f.label :user_email_cont, "User email contains" %>
+    <%= f.text_field :user_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :gifts_gift_name_cont, "Gifts gift_name contains" %>
+    <%= f.text_field :gifts_gift_name_cont, :class => "form-control", :placeholder => "Gifts gift_name contains" %>
+  </div>
 
 
   <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
-  <a href="/gifts" class="btn btn-outline-secondary btn-block mb-1">Clear filters</a>
+  <a href="/wishlists" class="btn btn-outline-secondary btn-block mb-1">Clear filters</a>
 
 <% end %>
 
-<a class="btn btn-outline-secondary btn-block mb-1" data-toggle="collapse" href="#gifts_filters">
+<a class="btn btn-outline-secondary btn-block mb-1" data-toggle="collapse" href="#wishlists_filters">
   Show filters
 </a>
