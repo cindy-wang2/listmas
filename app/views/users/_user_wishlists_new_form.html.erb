@@ -3,15 +3,9 @@
   <%= f.hidden_field :user_id, value: @user.id %>
 
   <div class="form-group">
-    <%= f.label :recipient %>
+    <%= f.label :title %>
 
-    <%= f.text_field :recipient, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :wishlist_name %>
-
-    <%= f.text_field :wishlist_name, class: "form-control" %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
   <%= f.submit "Create wishlist", class: "btn btn-block btn-outline-secondary" %>
