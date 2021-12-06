@@ -4,6 +4,7 @@ class WishlistResource < ApplicationResource
   attribute :updated_at, :datetime, writable: false
   attribute :user_id, :integer
   attribute :recipient, :string
+  attribute :wishlist_name, :string
 
   # Direct associations
 
