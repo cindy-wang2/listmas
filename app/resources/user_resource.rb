@@ -8,7 +8,7 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
-  has_many :wishlists
+  has_one :wishlist
 
   # Indirect associations
 end

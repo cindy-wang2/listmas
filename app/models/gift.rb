@@ -3,7 +3,8 @@ class Gift < ApplicationRecord
 
   belongs_to :list,
              class_name: "Wishlist",
-             foreign_key: "wishlist_id"
+             foreign_key: "wishlist_id",
+             counter_cache: true
 
   # Indirect associations
 

@@ -5,9 +5,7 @@ class WishlistsController < ApplicationController
   before_action :set_wishlist, only: %i[show edit update destroy]
 
   def index
-    @q = Wishlist.ransack(params[:q])
-    @wishlists = @q.result(distinct: true).includes(:user,
-                                                    :gifts).page(params[:page]).per(10)
+    @wishlists = [current_user.wishlist]
   end
 
   def show
@@ -24,12 +22,7 @@ class WishlistsController < ApplicationController
     @wishlist = Wishlist.new(wishlist_params)
 
     if @wishlist.save
-      message = "Wishlist was successfully created."
-      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referer, notice: message
-      else
-        redirect_to @wishlist, notice: message
-      end
+      redirect_to @wishlist, notice: "Wishlist was successfully created."
     else
       render :new
     end
@@ -45,12 +38,7 @@ class WishlistsController < ApplicationController
 
   def destroy
     @wishlist.destroy
-    message = "Wishlist was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referer, notice: message
-    else
-      redirect_to wishlists_url, notice: message
-    end
+    redirect_to wishlists_url, notice: "Wishlist was successfully destroyed."
   end
 
   private

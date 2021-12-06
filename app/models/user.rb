@@ -2,7 +2,7 @@ class User < ApplicationRecord
   include JwtToken
   # Direct associations
 
-  has_many   :wishlists,
+  has_one    :wishlist,
              dependent: :destroy
 
   # Indirect associations
