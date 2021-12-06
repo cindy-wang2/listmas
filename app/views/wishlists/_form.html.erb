@@ -3,21 +3,21 @@
 <%= form_with(model: wishlist, local: true, novalidate: true, class: "mb-3") do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
-    <% owner_class = "form-control" %>
-    <% owner_was_invalid = wishlist.errors.include?(:owner) %>
+    <% recipient_class = "form-control" %>
+    <% recipient_was_invalid = wishlist.errors.include?(:recipient) %>
 
     <% if was_validated %>
-      <% if owner_was_invalid %>
-        <% owner_class << " is-invalid" %>
+      <% if recipient_was_invalid %>
+        <% recipient_class << " is-invalid" %>
       <% else %>
-        <% owner_class << " is-valid" %>
+        <% recipient_class << " is-valid" %>
       <% end %>
     <% end %>
 
-    <%= f.label :owner %>
-    <%= f.text_field :owner, class: owner_class, placeholder: "Enter owner" %>
-    <% if owner_was_invalid %>
-      <% wishlist.errors.full_messages_for(:owner).each do |message| %>
+    <%= f.label :recipient %>
+    <%= f.text_field :recipient, class: recipient_class, placeholder: "Enter recipient" %>
+    <% if recipient_was_invalid %>
+      <% wishlist.errors.full_messages_for(:recipient).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>

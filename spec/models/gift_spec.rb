@@ -6,7 +6,6 @@ RSpec.describe Gift, type: :model do
   end
 
   describe "InDirect Associations" do
-    it { should have_one(:recipient) }
   end
 
   describe "Validations" do

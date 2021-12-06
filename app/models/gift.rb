@@ -7,10 +7,6 @@ class Gift < ApplicationRecord
 
   # Indirect associations
 
-  has_one    :recipient,
-             through: :list,
-             source: :user
-
   # Validations
 
   # Scopes
