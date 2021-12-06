@@ -1,0 +1,12 @@
+<%= form_with(model: @wishlist, local: true) do |f| %>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+
+  <div class="form-group">
+    <%= f.label :recipient %>
+
+    <%= f.text_field :recipient, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Create wishlist", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
