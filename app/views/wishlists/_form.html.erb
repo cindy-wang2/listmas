@@ -3,43 +3,21 @@
 <%= form_with(model: wishlist, local: true, novalidate: true, class: "mb-3") do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
-    <% recipient_class = "form-control" %>
-    <% recipient_was_invalid = wishlist.errors.include?(:recipient) %>
+    <% title_class = "form-control" %>
+    <% title_was_invalid = wishlist.errors.include?(:title) %>
 
     <% if was_validated %>
-      <% if recipient_was_invalid %>
-        <% recipient_class << " is-invalid" %>
+      <% if title_was_invalid %>
+        <% title_class << " is-invalid" %>
       <% else %>
-        <% recipient_class << " is-valid" %>
+        <% title_class << " is-valid" %>
       <% end %>
     <% end %>
 
-    <%= f.label :recipient %>
-    <%= f.text_field :recipient, class: recipient_class, placeholder: "Enter recipient" %>
-    <% if recipient_was_invalid %>
-      <% wishlist.errors.full_messages_for(:recipient).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <% wishlist_name_class = "form-control" %>
-    <% wishlist_name_was_invalid = wishlist.errors.include?(:wishlist_name) %>
-
-    <% if was_validated %>
-      <% if wishlist_name_was_invalid %>
-        <% wishlist_name_class << " is-invalid" %>
-      <% else %>
-        <% wishlist_name_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :wishlist_name %>
-    <%= f.text_field :wishlist_name, class: wishlist_name_class, placeholder: "Enter wishlist name" %>
-    <% if wishlist_name_was_invalid %>
-      <% wishlist.errors.full_messages_for(:wishlist_name).each do |message| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: title_class, placeholder: "Enter title" %>
+    <% if title_was_invalid %>
+      <% wishlist.errors.full_messages_for(:title).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>
