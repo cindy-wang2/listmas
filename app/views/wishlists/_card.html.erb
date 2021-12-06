@@ -7,10 +7,13 @@
     <dl class="mb-1">
       <dt>User</dt>
       <dd>
-        <% if @wishlist.recipient.present? %>
-          <%= link_to wishlist.recipient, wishlist.recipient %>
+        <% if @wishlist.user.present? %>
+          <%= link_to wishlist.user, wishlist.user %>
         <% end %>
       </dd>
+
+      <dt>Owner</dt>
+      <dd><%= wishlist.owner %></dd>
 
     </dl>
 
@@ -20,7 +23,7 @@
       </div>
 
       <div class="col">
-        <% if current_user == @wishlist.recipient %>
+        <% if current_user == @wishlist.user %>
           <%= link_to edit_wishlist_url(wishlist), class: "btn btn-block btn-sm btn-outline-secondary" do %>
             <i class="fas fa-edit"></i>
           <% end %>
@@ -28,7 +31,7 @@
       </div>
 
       <div class="col">
-        <% if current_user == @wishlist.recipient %>
+        <% if current_user == @wishlist.user %>
           <%= link_to wishlist, method: :delete, data: { confirm: "Do you really want to delete this wishlist?" }, class: "btn btn-block btn-outline-secondary" do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>

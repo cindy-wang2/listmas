@@ -52,6 +52,10 @@
   </script>
 
 
+  <div class="form-group">
+    <%= f.label :recipient_email_cont, "Recipient email contains" %>
+    <%= f.text_field :recipient_email_cont, :class => "form-control", :placeholder => "Recipient email contains" %>
+  </div>
 
 
   <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
