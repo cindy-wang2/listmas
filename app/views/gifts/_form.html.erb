@@ -24,21 +24,21 @@
     <% end %>
   </div>
   <div class="form-group">
-    <% gift_class = "form-control" %>
-    <% gift_was_invalid = gift.errors.include?(:gift) %>
+    <% gift_name_class = "form-control" %>
+    <% gift_name_was_invalid = gift.errors.include?(:gift_name) %>
 
     <% if was_validated %>
-      <% if gift_was_invalid %>
-        <% gift_class << " is-invalid" %>
+      <% if gift_name_was_invalid %>
+        <% gift_name_class << " is-invalid" %>
       <% else %>
-        <% gift_class << " is-valid" %>
+        <% gift_name_class << " is-valid" %>
       <% end %>
     <% end %>
 
-    <%= f.label :gift %>
-    <%= f.text_field :gift, class: gift_class, placeholder: "Enter gift" %>
-    <% if gift_was_invalid %>
-      <% gift.errors.full_messages_for(:gift).each do |message| %>
+    <%= f.label :gift_name %>
+    <%= f.text_field :gift_name, class: gift_name_class, placeholder: "Enter gift name" %>
+    <% if gift_name_was_invalid %>
+      <% gift.errors.full_messages_for(:gift_name).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>

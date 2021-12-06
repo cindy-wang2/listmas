@@ -3,7 +3,7 @@ class GiftResource < ApplicationResource
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
   attribute :wishlist_id, :integer
-  attribute :gift, :string
+  attribute :gift_name, :string
   attribute :description, :string
 
   # Direct associations
