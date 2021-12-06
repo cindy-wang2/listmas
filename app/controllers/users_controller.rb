@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @relationship = Relationship.new
     @wishlist = Wishlist.new
   end
 

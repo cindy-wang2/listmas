@@ -2,20 +2,14 @@ class User < ApplicationRecord
   include JwtToken
   # Direct associations
 
-  has_many   :recipients,
-             class_name: "Relationship",
-             foreign_key: "your_recipients",
-             dependent: :destroy
-
-  has_many   :gifters,
-             class_name: "Relationship",
-             foreign_key: "your_giftgivers",
-             dependent: :destroy
-
   has_many   :wishlists,
              dependent: :destroy
 
   # Indirect associations
+
+  has_many   :gifts,
+             through: :wishlists,
+             source: :gifts
 
   # Validations
 

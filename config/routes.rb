@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   scope path: ApplicationResource.endpoint_namespace,
         defaults: { format: :jsonapi } do
     scope module: "api/v1", as: "api" do
-      resources :relationships
-
       resources :gifts
 
       resources :wishlists
@@ -16,7 +14,6 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: "wishlists#index"
-  resources :relationships
   resources :gifts
   resources :wishlists
   devise_for :users

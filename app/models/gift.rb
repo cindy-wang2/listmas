@@ -3,9 +3,13 @@ class Gift < ApplicationRecord
 
   belongs_to :list,
              class_name: "Wishlist",
-             foreign_key: "wishlist"
+             foreign_key: "wishlist_id"
 
   # Indirect associations
+
+  has_one    :recipient,
+             through: :list,
+             source: :user
 
   # Validations
 
