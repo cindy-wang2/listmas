@@ -2,6 +2,11 @@
   <p class="lead">Narrow results:</p>
 
   <div class="form-group">
+    <%= f.label :wishlist_name_cont, "Wishlist name contains" %>
+    <%= f.text_field :wishlist_name_cont, :class => "form-control", :placeholder => "Wishlist name contains" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :recipient_cont, "Recipient contains" %>
     <%= f.text_field :recipient_cont, :class => "form-control", :placeholder => "Recipient contains" %>
   </div>

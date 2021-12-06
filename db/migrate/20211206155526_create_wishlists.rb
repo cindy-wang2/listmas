@@ -3,6 +3,7 @@ class CreateWishlists < ActiveRecord::Migration[6.0]
     create_table :wishlists do |t|
       t.integer :user_id
       t.string :recipient
+      t.string :wishlist_name
 
       t.timestamps
     end

@@ -24,5 +24,27 @@
       <% end %>
     <% end %>
   </div>
+  <div class="form-group">
+    <% wishlist_name_class = "form-control" %>
+    <% wishlist_name_was_invalid = wishlist.errors.include?(:wishlist_name) %>
+
+    <% if was_validated %>
+      <% if wishlist_name_was_invalid %>
+        <% wishlist_name_class << " is-invalid" %>
+      <% else %>
+        <% wishlist_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :wishlist_name %>
+    <%= f.text_field :wishlist_name, class: wishlist_name_class, placeholder: "Enter wishlist name" %>
+    <% if wishlist_name_was_invalid %>
+      <% wishlist.errors.full_messages_for(:wishlist_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
