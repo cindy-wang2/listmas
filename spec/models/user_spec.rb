@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
   end
 
   describe "InDirect Associations" do
-    it { should have_many(:gifts) }
   end
 
   describe "Validations" do

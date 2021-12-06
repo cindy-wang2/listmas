@@ -114,32 +114,6 @@
               <% end %>
             <% end %>
           </div>
-
-          <div class="form-group">
-            <% firstname_was_invalid = resource.errors.include?(:firstname) %>
-
-            <% firstname_class = "form-control" %>
-
-            <% if was_validated %>
-              <% if firstname_was_invalid %>
-                <% firstname_class << " is-invalid" %>
-              <% else %>
-                <% firstname_class << " is-valid" %>
-              <% end %>
-            <% end %>
-
-            <%= f.label :firstname %>
-
-            <%= f.text_field :firstname, :class => firstname_class, :placeholder => "Enter firstname" %>
-
-            <% if firstname_was_invalid %>
-              <% resource.errors.full_messages_for(:firstname).each do |message| %>
-                <div class="invalid-feedback d-flex">
-                  <%= message %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
           <%= f.button class: "btn btn-outline-primary btn-block" %>
 
           <hr>

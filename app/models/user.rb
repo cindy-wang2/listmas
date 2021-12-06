@@ -7,10 +7,6 @@ class User < ApplicationRecord
 
   # Indirect associations
 
-  has_many   :gifts,
-             through: :wishlists,
-             source: :gifts
-
   # Validations
 
   validates :username, uniqueness: true
